@@ -1,0 +1,19 @@
+﻿@model diary_course.Models.DTO.DeleteCategoryDto
+
+@{
+    ViewBag.Title = "Удалить категорию";
+    Layout = "_Layout";
+}
+<form style="display: flex; flex-direction: column; justify-content: center; align-items: center" method="post" asp-action="Deletee">
+
+<h2>Удалить категорию</h2>
+Выберите категорию для удаления:
+<select asp-for="CategoryId">
+        @foreach (var category in Model.Categories)
+        {
+                    <option value="@category.Id">@category.Name</option>
+        }
+    </select>
+    <br />
+    <button class="btn btn-danger">Удалить категорию</button>
+</form> 

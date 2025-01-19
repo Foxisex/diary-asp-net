@@ -1,0 +1,11 @@
+﻿@model Note
+
+@{
+    ViewBag.Title = "Запись из дневника";
+    Layout = "_Layout";
+}
+
+<h2>Запись из дневника</h2>
+
+<div class="mb-2">@Model.Date</div>
+<div>@Model.Text</div>

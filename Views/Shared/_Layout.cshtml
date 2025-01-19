@@ -1,0 +1,56 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/diary_course.styles.css" asp-append-version="true"/>
+    <style> 
+        .header {
+            text-align: center;
+            position : relative;
+            top : 0;
+
+        }
+
+        a {
+           text-decoration:none;
+           color : blue;
+        }
+
+    .note-container {
+        flex-wrap: wrap;
+        display: flex;
+    }
+
+    .note {
+        width: 30%; /* или любая другая ширина, которая вам подходит */
+        margin-bottom: 10px; /* добавьте отступ снизу для разделения блоков */
+        margin-right:20px;
+    }
+
+    .textlenghtlimit {
+        text-overflow: ellipsis; /* will make [...] at the end */
+        width: 370px; /* change to your preferences */
+        white-space: nowrap; /* paragraph to one line */
+        overflow:hidden; /* older browsers */
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <H3 class = "header" ><a href="/">Личный дневник</a></H3>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

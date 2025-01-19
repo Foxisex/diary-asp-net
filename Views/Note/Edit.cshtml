@@ -1,0 +1,29 @@
+﻿@model diary_course.Models.DTO.UpdateNoteDto
+
+@{
+    ViewBag.Title = "Редактировать заметку";
+    Layout = "_Layout";
+}
+
+<form style="display: flex; flex-direction: column; justify-content: center; align-items: center" method="post" asp-action="Update">
+     <h2>Редактировать заметку</h2>
+    @Html.HiddenFor(Model => Model.Id)
+    
+    @{
+        string formattedDate = Model.Date.ToString("yyyy-MM-dd"); 
+    }
+    <input value=@formattedDate class="mb-2" placeholder="Дата" type="date" asp-for="Date"/>
+    
+    Текст:
+    <textarea rows="15" cols="200" style="width:70%;" placeholder="Текст" asp-for="Text"></textarea>
+    
+    Категория:
+    <select asp-for="CategoryId">
+        @foreach (var category in Model.Categories)
+        {
+            <option value="@category.Id">@category.Name</option>
+        }
+    </select>
+    <br />
+    <button class="btn btn-primary">Обновить заметку</button>
+</form>

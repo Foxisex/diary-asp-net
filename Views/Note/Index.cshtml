@@ -1,0 +1,70 @@
+﻿@using Microsoft.IdentityModel.Tokens
+@model diary_course.Models.DTO.NoteListDto
+
+@{
+    ViewBag.Title = "Список заметок";
+    Layout = "_Layout";
+}
+
+<h2>Список заметок</h2>
+
+<a href="/Note/Create" class="btn btn-primary">Создать заметку</a>
+<a href="/Category/Create" class="btn btn-warning">Создать категорию</a>
+<a href="/Category/Delete" class ="btn btn-danger" >Удалить категорию</a>
+<a style="float: right;" href="/User/Logout" class ="btn btn-primary" >Выйти</a>
+
+
+<div class="mt-3">По категориям:</div>
+<div class="d-flex gap-3">
+    @if (!Model.Categories.IsNullOrEmpty())
+    {
+        <a href="/">Все</a>
+        @foreach (var category in Model.Categories)
+        {
+            <a href="/Note/Index/@category.Id">@category.Name</a>
+        }
+    }
+</div>
+
+<div class="mt-3 d-flex gap-3">
+    @if (!Model.Notes.IsNullOrEmpty())
+    {
+        var notes = Model.Notes.OrderBy(i => i.Date);
+
+        if (Model.Notes.Count > 2)
+        {
+            <div class="note-container">
+                @foreach (var note in notes)
+                {
+
+                    <div class="note">
+                        <div class="mb-2 p-2 border">
+                            <div>@note.Date</div>
+                            <div class = "textlenghtlimit">@note.Text</div>
+                            <div class="mt-1 d-flex gap-3">
+                                <a style = "border: 2px solid #000;" href="/Note/One?id=@note.Id" class="btn btn-light">Открыть отдельно</a>
+                                <a style = "border: 2px solid #000;" href="/Note/Edit?id=@note.Id" class="btn btn-primary">Редактировать</a> 
+                                <a style = "border: 2px solid #000;" href="/Note/Delete?id=@note.Id" class="btn btn-danger">Удалить</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            @foreach (var note in notes)
+            {
+                <div class="mb-2 p-2 border">
+                    <div>@note.Date</div>
+                    <div class = "textlenghtlimit">@note.Text</div>
+                    <div class="mt-1 d-flex gap-3">
+                        <a style = "border: 2px solid #000;" href="/Note/One?id=@note.Id" class="btn btn-light">Открыть отдельно</a>
+                        <a style = "border: 2px solid #000;" href="/Note/Edit?id=@note.Id" class="btn btn-primary">Редактировать</a> 
+                        <a style = "border: 2px solid #000;" href="/Note/Delete?id=@note.Id" class="btn btn-danger">Удалить</a>
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>

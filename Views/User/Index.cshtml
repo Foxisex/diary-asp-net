@@ -1,0 +1,14 @@
+﻿@model diary_course.Models.DTO.AuthUserDto
+
+@{
+    ViewBag.Title = "Вход";
+    Layout = "_Layout";
+}
+<form style="display: flex; flex-direction: column; justify-content: center; align-items: center" method="post" asp-action="Login">
+    <h2>Вход</h2>
+    <input placeholder="Имя пользователя" asp-for="Username"/>
+    <input class="mt-2" placeholder="Пароль" type="password" asp-for="Password"/>
+    <br />
+    <button type="submit" class="btn btn-primary">Войти в аккаунт</button>
+    <a href="/User/Register">Или зарегистрироваться</a>
+</form>

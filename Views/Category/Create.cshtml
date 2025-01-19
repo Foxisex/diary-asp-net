@@ -1,0 +1,15 @@
+﻿@model diary_course.Models.DTO.AddCategoryDto
+
+@{
+    ViewBag.Title = "Создать категорию";
+    Layout = "_Layout";
+}
+<form style="display: flex; flex-direction: column; justify-content: center; align-items: center" method="post" asp-action="Create">
+   
+
+<h2>Создать категорию</h2>
+Название:
+    <input placeholder="Текст" asp-for="Name" type="text">
+    <br />
+    <button class="btn btn-primary">Создать категорию</button>
+</form>
